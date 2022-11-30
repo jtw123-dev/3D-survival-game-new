@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+
+    [SerializeField] private GameObject _bloodPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,15 @@ public class Shoot : MonoBehaviour
             RaycastHit hit;
           if (  Physics.Raycast(ray,out hit,Mathf.Infinity))
             {
+                IDamagable damage = hit.collider.GetComponent<IDamagable>();
+
+                if (damage != null)
+                {
+                    damage.Damage();
+                    var bloodPrefabCopy = Instantiate(_bloodPrefab, hit.point, Quaternion.LookRotation( hit.normal));
+
+                    Destroy(bloodPrefabCopy,1f);
+                }
                 Debug.Log("You hit object " + hit.collider.name);
             }
 
