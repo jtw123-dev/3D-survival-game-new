@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour,IDamagable
 {
-    [SerializeField] CharacterController _character;
-    [SerializeField] Camera _camera;
-    [SerializeField] float _speed;
-    [SerializeField] float _jumpForce;
+    [SerializeField] private  CharacterController _character;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _jumpForce;
     private float _yVelocity;
     [SerializeField] private float _gravity;
     [SerializeField] private float _cameraSensitivity;
@@ -18,8 +18,7 @@ public class Player : MonoBehaviour,IDamagable
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {      
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -41,7 +40,6 @@ public class Player : MonoBehaviour,IDamagable
             Destroy(gameObject);
         }
     }
-
     private void Movement()
     {
         float xPos = Input.GetAxis("Horizontal") * _speed;
@@ -83,8 +81,7 @@ public class Player : MonoBehaviour,IDamagable
         else
         {
             return;
-        }
-       
+        }  
     }
 
     private void OnTriggerStay(Collider other)

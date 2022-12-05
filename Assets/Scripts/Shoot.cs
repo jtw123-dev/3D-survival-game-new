@@ -6,11 +6,6 @@ public class Shoot : MonoBehaviour
 {
 
     [SerializeField] private GameObject _bloodPrefab;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -33,7 +28,6 @@ public class Shoot : MonoBehaviour
                 }
                 Debug.Log("You hit object " + hit.collider.name);
             }
-
         }
     }
 }
